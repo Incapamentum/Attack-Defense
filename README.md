@@ -5,8 +5,8 @@ Completed as part of a Spring 2021 term project for the special topics course EE
 
 ## System & Environment
 
-OS: Ubuntu 18.04 LTS
-CPU: AMD Ryzen 7 3700X
+OS: Ubuntu 18.04 LTS  
+CPU: AMD Ryzen 7 3700X  
 Memory: 32GB DDR4 at 3200 MHz
 
 ## Disclaimer
