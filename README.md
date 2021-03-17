@@ -9,7 +9,8 @@ Completed as part of a Spring 2021 term project for the special topics course EE
 
 I. Disclaimer  
 II. System & Environment  
-III. Software Tools
+III. Software Tools  
+IV. Academic Sources
 
 
 
@@ -33,7 +34,10 @@ Memory: 32GB DDR4 at 3200 MHz
 
 ### Development Environment
 
-Languages: C
+
+Written primarily in C unless otherwise noted  
+GCC 7.5.0  
+Visual Studio Code 1.54.3
 
 
 
@@ -44,3 +48,25 @@ The following pieces of software were used in the development of this project. U
 ### [Cache Template Attacks](https://github.com/IAIK/cache_template_attacks)
 
 GitHub repository containing tools that can be used to perform [Cache Template Attacks](https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/gruss).
+
+## [Mastik: A Micro-Architectural Side-Channel Toolkit](https://cs.adelaide.edu.au/~yval/Mastik/)
+
+Provides robust implementations of side-channel attack techniques. It implements six side-channel attacks:
+
++ Prime+Probe on L1 data cache
++ Prime+Probe on L1 instruction cache
++ Pribe+Probe on last-level cache
++ Flush+Reload
++ Flush+Flush
++ Performance degredation attack
+
+
+
+
+
+## Academic Sources
+
+[Last-Level Cache Side-Channel Attacks are Practical](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7163050)
+
+[Theory and Practice of Finding Eviction Sets](https://arxiv.org/pdf/1810.01497.pdf)
+
