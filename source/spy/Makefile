@@ -3,8 +3,7 @@ TARGETS=$(FILES:.c=)
 OBJS=${FILES:.c=.o}
 CFLAGS=-g -std=gnu99 -I../src
 LDFLAGS=-L../src/ -g
-LDLIBS=-lmastik @LIBS@
-
+LDLIBS=-lmastik
 
 all: ${TARGETS}
 
