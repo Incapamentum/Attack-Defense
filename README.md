@@ -3,6 +3,8 @@ A single-core implementation of a cache timing side channel attack making use of
 
 Completed as part of a Spring 2021 term project for the special topics course EEL 5937 - Attacks & Defenses in Secure Architectures. Class instructor is Dr. Fan Yao.
 
+The paper by Liu et. al [1] served as the main motivation in pursuing this term project.
+
 
 
 ## Table of Contents
@@ -10,7 +12,7 @@ Completed as part of a Spring 2021 term project for the special topics course EE
 I. Disclaimer  
 II. System & Environment  
 III. Software Tools  
-IV. Academic Sources
+IV. References
 
 
 
@@ -49,7 +51,7 @@ The following pieces of software were used in the development of this project. U
 
 GitHub repository containing tools that can be used to perform [Cache Template Attacks](https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/gruss).
 
-## [Mastik: A Micro-Architectural Side-Channel Toolkit](https://cs.adelaide.edu.au/~yval/Mastik/)
+### [Mastik: A Micro-Architectural Side-Channel Toolkit](https://cs.adelaide.edu.au/~yval/Mastik/)
 
 Provides robust implementations of side-channel attack techniques. It implements six side-channel attacks:
 
@@ -64,9 +66,11 @@ Provides robust implementations of side-channel attack techniques. It implements
 
 
 
-## Academic Sources
+## IV. References
 
-[Last-Level Cache Side-Channel Attacks are Practical](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7163050)
+This section contains links to papers that were used to gain insights on the development of this single-core attack.
 
-[Theory and Practice of Finding Eviction Sets](https://arxiv.org/pdf/1810.01497.pdf)
+[1] F. Liu, Y. Yarom, Q. Ge, G. Heiser and R. B. Lee, "[Last-Level Cache Side-Channel Attacks are Practical,](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7163050)" 2015 IEEE Symposium on Security and Privacy, San Jose, CA, USA, 2015, pp. 605-622, doi: 10.1109/SP.2015.43.
+
+[2] P. Vila, B. Köpf and J. F. Morales, "[Theory and Practice of Finding Eviction Sets](https://ieeexplore.ieee.org/document/8835261)," 2019 IEEE Symposium on Security and Privacy (SP), San Francisco, CA, USA, 2019, pp. 39-54, doi: 10.1109/SP.2019.00042.
 
