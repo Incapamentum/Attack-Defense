@@ -47,9 +47,9 @@ Visual Studio Code 1.54.3
 
 The following pieces of software were used in the development of this project. Unless otherwise noted, all software is open-sourced and used as-is.
 
-### [Cache Template Attacks](https://github.com/IAIK/cache_template_attacks)
+### [Cache Template Attacks](https://github.com/IAIK/cache_template_attacks) [3]
 
-GitHub repository containing tools that can be used to perform [Cache Template Attacks](https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/gruss).
+GitHub repository containing tools that can be used to perform cache template attacks.
 
 
 
@@ -66,7 +66,7 @@ Provides robust implementations of side-channel attack techniques. It implements
 
 
 
-### [evsets](https://github.com/cgvwzq/evsets)
+### [evsets](https://github.com/cgvwzq/evsets) [2]
 
 A tool that allows to find eviction sets using different algorithms and settings.
 
@@ -79,4 +79,6 @@ This section contains links to papers that were used to gain insights on the dev
 [1] F. Liu, Y. Yarom, Q. Ge, G. Heiser and R. B. Lee, "[Last-Level Cache Side-Channel Attacks are Practical,](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7163050)" 2015 IEEE Symposium on Security and Privacy, San Jose, CA, USA, 2015, pp. 605-622, doi: 10.1109/SP.2015.43.
 
 [2] P. Vila, B. Köpf and J. F. Morales, "[Theory and Practice of Finding Eviction Sets](https://ieeexplore.ieee.org/document/8835261)," 2019 IEEE Symposium on Security and Privacy (SP), San Francisco, CA, USA, 2019, pp. 39-54, doi: 10.1109/SP.2019.00042.
+
+[3] Daniel Gruss, Raphael Spreitzer, and Stefan Mangard. 2015. [Cache template attacks: automating attacks on inclusive last-level caches.](https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/gruss) In Proceedings of the 24th USENIX Conference on Security Symposium (SEC'15). USENIX Association, USA, 897–912.
 
