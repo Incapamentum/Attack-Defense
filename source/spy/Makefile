@@ -3,6 +3,7 @@ OPT = -O3
 WARN = -Wall
 LIBLINK = -I ../Mastik/src
 L1 = ../Mastik/src/l1.c
+UTIL = ../Mastik/src/util.c
 
 CFLAGS = $(OPT) $(WARN) $(LIBLINK)
 
@@ -15,7 +16,7 @@ all: prime_probe
 
 # Compile primeprobe attack
 prime_probe:
-	$(C) $(CFLAGS) primeprobe_spy.c $(L1) -o primeprobe_spy
+	$(C) $(CFLAGS) primeprobe_spy.c $(L1) $(UTIL) -o primeprobe_spy
 
 # Clean directory of objects and binary
 clean:
