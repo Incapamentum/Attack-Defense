@@ -7,6 +7,17 @@
 
 #define MAX_SAMPLES 100000
 
+// =============================
+//     Ryzen 7 3700X DETAILS
+// =============================
+//      L1 data cache size: 32KB
+//      L1 line size: 64B
+//      L1 data cache associativity: 8
+//
+//      # lines: 32KB / 64B = 512 lines
+//      # sets: 512 lines / 8 = 64 sets
+//
+
 void usage(const char *prog)
 {
     fprintf(stderr, "Usage: %s <samples>\n", prog);
@@ -33,28 +44,36 @@ int main(int argc, char **argv)
     if (samples > MAX_SAMPLES)
         samples = MAX_SAMPLES;
 
+    // Allocates memory to the L1 Prime+Probe struct. Important to this
+    // is an array containing containing L1 cache sets to monitor.
     l1_pp = l1_prepare();
 
+    // Obtains number of sets to allocate memory for a mapping
+    // for the monitored sets to be passed to it
+    // By default, all L1 cache sets are be monitored
     n_sets = l1_getmonitoredset(l1_pp, NULL, 0);
     map = calloc(n_sets, sizeof(int));
     l1_getmonitoredset(l1_pp, map, n_sets);
 
+    // Obtains a small number of 
     for (i = 0; i < L1_SETS; i++)
-        rmap[i] = -1;
-    
+        rmap[i] = -1;    
     for (i = 0; i < n_sets; i++)
         rmap[map[i]] = i;
 
+    // Allocating memory for an array to hold cache timings
     res = calloc(samples * n_sets, sizeof(uint16_t));
 
+    // Initializing cache timings array with default values
     for (i = 0; i < samples * n_sets; i += 4096/sizeof(uint16_t))
         res[i] = i;
 
-    // printf("sizeof(uint16_t): %lu\n", sizeof(uint16_t));
-
+    // Creating a delay before L1 data cache is probed depending on the
+    // number of samples
     delayloop(3000000000U);
     l1_repeatedprobe(l1_pp, samples, res, 0);
 
+    // Printing out the results of the Prime+Probe
     for (int i = 0; i < samples; i++)
     {
         for (j = 0; j < L1_SETS; j++)
@@ -68,6 +87,7 @@ int main(int argc, char **argv)
         putchar('\n');
     }
 
+    // Freeing memory
     free(map);
     free(res);
     l1_release(l1_pp);
