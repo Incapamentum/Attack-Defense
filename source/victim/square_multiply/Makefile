@@ -19,7 +19,7 @@ all: victim_process
 # victim_process: $(OBJ)
 # $(C) -o square_multiply_victim $(CFLAGS) $(OBJ)
 victim_process:
-	$(C) $(CFLAGS) $(SRC) -o square_multiply
+	$(C) $(CFLAGS) $(SRC) -o victim_sqr_mult
 
 
 # generic rule for converting any .c file to any .o file
@@ -29,7 +29,7 @@ victim_process:
 
 # type "make clean" to remove all .o files plus the binary
 clean:
-	rm -f *.o square_multiply
+	rm -f *.o victim_sqr_mult
 
 
 # type "make clobber" to remove all .o files (leaves binary)
