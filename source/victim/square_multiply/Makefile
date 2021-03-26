@@ -1,5 +1,5 @@
 C = gcc
-OPT = -O3
+OPT = -O2
 WARN = -Wall
 CFLAGS = $(OPT) $(WARN)
 # CFLAGS = $(OPT) $(WARN) $(INC) $(LIB)

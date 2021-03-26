@@ -22,9 +22,9 @@ int number_of_bits(unsigned int n)
 
 // Square-and-Multiply Exponentiation
 // Exponentiation algorithm that makes use of the modulo operation: b^e mod m
-unsigned int square_multiply(unsigned int b, unsigned int e, unsigned int m, int num_bits)
+unsigned long long square_multiply(unsigned int b, unsigned int e, unsigned int m, int num_bits)
 {
-    unsigned int r = 1;
+    unsigned long long r = 1;
 
     // Bookkeeping
     int bit_mask = 1 << (num_bits - 1), i;

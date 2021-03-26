@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     map = calloc(n_sets, sizeof(int));
     l1_getmonitoredset(l1_pp, map, n_sets);
 
-    // Obtains a small number of 
+    // Obtains a small number of sets to monitor
     for (i = 0; i < L1_SETS; i++)
         rmap[i] = -1;    
     for (i = 0; i < n_sets; i++)
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
             if (rmap[j] == -1)
                 printf(" 0 \t");
             else
-                printf("%3d \t", res[i * n_sets + rmap[j]]);
+                printf(" %3d \t", res[i * n_sets + rmap[j]]);
         }
 
         putchar('\n');
