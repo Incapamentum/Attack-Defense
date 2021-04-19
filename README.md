@@ -1,7 +1,5 @@
-# Attack-Defense
+# Attack & Defense
 Completed as part of a Spring 2021 term project for the special topics course **EEL 5937** - *Attacks & Defenses in Secure Architectures*. Class instructor is Dr. Fan Yao.
-
-The paper by Liu et. al [1] served as the main motivation in pursuing this term project.
 
 
 
@@ -12,7 +10,8 @@ II. System & Environment
 III. Software Tools  
 IV. Attack  
 V. Defense  
-VI. References
+VI. Build Process  
+VII. References
 
 
 
@@ -58,19 +57,47 @@ Provides robust implementations of side-channel attack techniques. It implements
 + Flush+Flush
 + Performance degredation attack
 
+### [quickhpc](https://github.com/chpmrc/quickhpc) [2]
+
+Custom utility that was developed to probe hardware performance counters (HPCs) using [PAPI](http://icl.cs.utk.edu/papi/) (Performance Application Programming Interface) at a high resolution. 
+
+The `perf` command-line tool provides an interactive interface to HPCs that allows to collect, visualize, filter and aggregate data gathered through HPCs on a system-wide, process, or thread granularity. A subcommand to `perf` is `perf-stats`, which allows a user to specify which events to monitor, the output format and the interval of time between consecutive reports. However, this time resolution is limited to a minimum of 100 ms between two consecutive reports.
+
+After a thorough optimization, `quickhpc` reaches a maximum resolution of 3 microseconds, which is more than 30000 times faster than the `perf-stat`
 
 
-## IV. Attack
+
+## IV. Attack <sup>[1]</sup>
+
+A cache-timing side-channel attack was implemented, making use of the Prime+Probe technique. This is a general technique for an attacker *A* to learn which cache set is accessed by a victim process *V*.
+
+The general approach is as follows:
+
+- **Prime**: *A* fills one or more cache sets with its own code or data
+- **Idle**: *A* waits for a pre-configured time interval while *V* executes and utilizes the cache
+- **Probe**: *A* continues execution and measures the time to load each set of their data or code that was primed. If *V* has accessed some of the cache sets, it will have evicted some of *A*'s lines, which is observed as an increased memory access latency for those lines.
+
+The above technique can be used to observe secret-dependent execution paths, shown via an implementation of the square-and-multiply exponentiation algorithm, and secret-dependent data access patterns, shown via an implementation of the sliding-window exponentiation algorithm.
+
+Taking into consideration the system hardware, the spy and victim processes execute on the same core. Scripts were written that ensure both spy and victim processes execute on the same core.
+
+The Mastik toolkit was used to develop the single-core Prime+Probe attack.
 
 
 
-## V. Defense
+## V. Defense <sup>[2]</sup>
 
 
 
-## VI. References
+## VI. Build Process
+
+
+
+## VII. References
 
 This section contains links to papers that were used to gain insights on the development of this single-core attack.
 
 [1] F. Liu, Y. Yarom, Q. Ge, G. Heiser and R. B. Lee, "[Last-Level Cache Side-Channel Attacks are Practical,](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7163050)" 2015 IEEE Symposium on Security and Privacy, San Jose, CA, USA, 2015, pp. 605-622, doi: 10.1109/SP.2015.43.
+
+[2] Marco Chiappetta, Erkay Savas, and Cemal Yilmaz. 2016. Real time detection of cache-based side-channel attacks using hardware performance counters. <i>Appl. Soft Comput.</i> 49, C (December 2016), 1162–1174. DOI:https://doi.org/10.1016/j.asoc.2016.09.014
 
