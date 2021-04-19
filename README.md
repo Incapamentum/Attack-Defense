@@ -65,7 +65,7 @@ The `perf` command-line tool provides an interactive interface to HPCs that allo
 
 After a thorough optimization, `quickhpc` reaches a maximum resolution of 3 microseconds, which is more than 30000 times faster than the `perf-stat`
 
-
+The current tool as is has actually been broken due to incompatibility with latest PAPI releases. However, a [fork](https://github.com/zechenghe/quickhpc) of the repo was found that fixes these issues. This is the version of `quickhpc` that is being used.
 
 ## IV. Attack <sup>[1]</sup>
 
