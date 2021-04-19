@@ -6,7 +6,7 @@ from matplotlib import cm
 from random import randint
 
 TRACE_PATH = "../spy/trace.txt"
-NUM_SAMPLES = 5000
+NUM_SAMPLES = 10000
 NUM_SETS = 64
 
 with open(TRACE_PATH, "r") as trace_file:
@@ -72,7 +72,7 @@ else:
 if (SAMPLE):
     plt.ylim([0, 200])
     plt.xlabel("Sample Number")
-    plt.ylabel("Probe Latency (ns)")
+    plt.ylabel("Probe Latency (cycles)")
 else:
     plt.xlabel("Probe Time")
     plt.ylabel("Cache Set")
