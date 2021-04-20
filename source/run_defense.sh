@@ -1,7 +1,7 @@
 #!/bin/bash
 
-
-
+# ????
+# What am I even doing here?
 if [[ $3 -ne 2 ]]; then
     echo "Illegal number of parameters!"
     echo ""
