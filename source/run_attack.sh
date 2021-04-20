@@ -11,7 +11,7 @@
 if [[ $# -ne 2 ]]; then
     echo "Illegal number of parameters!"
     echo ""
-    echo "Usage: ./run_attack.sh [core] [samples]"
+    echo "Usage: ${0} [core] [samples]"
     echo "    core    - the core on which the spy and victim processes will run on"
     echo "    samples - number of samples to run attack for"
     exit 2

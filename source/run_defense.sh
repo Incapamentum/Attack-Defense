@@ -3,7 +3,7 @@
 if [[ $# -ne 3 ]]; then
     echo "Illegal number of parameters!"
     echo ""
-    echo "Usage: ./run_defense.sh [core] [event_path] [iterations]"
+    echo "Usage: ${0} [core] [event_path] [iterations]"
     echo "      core       - core on which spy/victim processes will be executed on"
     echo "      event_path - name of the path pointing to events.conf file"
     echo "      iterations - number of iterations to run quickhpc for"
@@ -28,7 +28,7 @@ if [ $1 -ge 0 ] && [ $1 -lt $cpu_cores ]; then
     echo "Waiting to execute spy..."
     sleep 5s
 
-    echo "Exeucting spy..."
+    echo "Executing spy..."
     while true; do taskset -c $1 ./spy/primeprobe_spy 1000 > /dev/null; done & echo "PID of spy process:" $!
     spy=$!
 

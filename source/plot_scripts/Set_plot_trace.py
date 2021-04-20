@@ -6,7 +6,7 @@ from matplotlib import cm
 from random import randint
 
 TRACE_PATH = "../spy/trace.txt"
-LAT_THRESHOLD = 75
+LAT_THRESHOLD = 125
 NUM_SAMPLES = 10000
 NUM_SETS = 64
 
