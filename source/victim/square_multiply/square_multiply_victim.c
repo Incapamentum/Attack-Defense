@@ -1,15 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "square_multiply.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
     unsigned int base, exponent;
     unsigned long long modulus;
 
     base = 4;
-    // exponent = 65537;
-    // exponent = 269488144; // 0x10101010
     exponent = 2863311530; // 0xAAAAAAAA
 
     // p = 44893
@@ -17,8 +16,8 @@ int main(void)
     // modulus = (p - 1)(q - 1)
     modulus = 1494903600;
 
-    square_multiply(base, exponent, modulus, number_of_bits(exponent));
+    if (argc > 1)
+        exponent = atoi(argv[1]);
 
-    // printf("Result of square-multiply: %llu\n", square_multiply(base, exponent, modulus, number_of_bits(exponent)));
-    // printf("Result of square-multiply: %d\n", square_multiply(4, 11, 701111, number_of_bits(11)));
+    square_multiply(base, exponent, modulus, number_of_bits(exponent));
 }

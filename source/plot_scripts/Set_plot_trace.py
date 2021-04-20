@@ -1,9 +1,6 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
 from matplotlib import cm
-from random import randint
 
 TRACE_PATH = "../spy/trace.txt"
 LAT_THRESHOLD = 125
@@ -12,8 +9,6 @@ NUM_SETS = 64
 
 with open(TRACE_PATH, "r") as trace_file:
     lines = trace_file.readlines()
-
-count = 0
 
 samples = []
 cache_trace = []
@@ -51,7 +46,7 @@ cache_trace.pop(0)
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(20, 6))
 
 for x, y in zip(samples, cache_trace):
-    plt.scatter([x] * len(y), y, c=cm.hot(y))
+    plt.scatter([x] * len(y), y, c=cm.hot(y), marker="|")
 
 ##plt.ylim([0, 200])
 plt.xlabel("Sample Number")

@@ -12,8 +12,6 @@ NUM_SETS = 64
 with open(TRACE_PATH, "r") as trace_file:
     lines = trace_file.readlines()
 
-count = 0
-
 samples = []
 cache_trace = []
 

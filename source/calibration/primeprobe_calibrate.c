@@ -20,25 +20,31 @@
 
 void usage(const char *prog)
 {
-    fprintf(stderr, "Usage: %s <samples>\n", prog);
+    fprintf(stderr, "Usage: %s <samples> <set>\n", prog);
+    fprintf(stderr, "       samples - number of samples to run for");
+    fprintf(stderr, "       set     - the specified set to monitor");
     exit(1);
 }
 
 int main(int argc, char **argv)
 {
-    int n_sets, *map, rmap[L1_SETS], samples;
+    int n_sets, *map, rmap[L1_SETS], samples, set;
     uint16_t *res;
     l1pp_t l1_pp;
 
     // Bookkeeping
     int i, j;
 
-    if (argv[1] == NULL)
+    if (argc != 3)
         usage(argv[0]);
 
     samples = atoi(argv[1]);
+    set = atoi(argv[2]);
 
     if (samples < 0)
+        usage(argv[0]);
+
+    if (set < 0 || set > L1_SETS)
         usage(argv[0]);
 
     if (samples > MAX_SAMPLES)
@@ -48,6 +54,12 @@ int main(int argc, char **argv)
     // is an array containing containing L1 cache sets to monitor.
     // By default, it monitors all 64 cache sets
     l1_pp = l1_prepare();
+
+    // Removing all cache sets from being monitored
+    l1_unmonitorall(l1_pp);
+
+    // Adds specific cache set for monitoring
+    l1_monitor(l1_pp, set);
 
     // Obtains number of sets to allocate memory for a mapping
     // for the monitored sets to be passed to it
