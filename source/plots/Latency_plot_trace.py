@@ -16,7 +16,6 @@ count = 0
 
 samples = []
 cache_trace = []
-cache_sets = []
 
 SAMPLE = True
 
@@ -27,10 +26,6 @@ for i in range(NUM_SAMPLES):
 # 64 probe latencies across the samples (y-axis)
 for i in range(NUM_SAMPLES):
     cache_trace.append([])
-
-# 64 cache sets (y-axis)
-for i in range(NUM_SETS):
-    cache_sets.append(i)
 
 # Bookkeeping
 i = 0
@@ -44,12 +39,10 @@ for l in lines:
     for j in range(len(probe_sample)):
         probe_sample[j] = int(probe_sample[j])
 
-
     cache_trace[i] = probe_sample
 
     i += 1
 
-# print(count)
 cache_trace.pop(0)
 
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(20, 6))

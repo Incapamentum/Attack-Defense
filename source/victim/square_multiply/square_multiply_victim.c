@@ -4,11 +4,13 @@
 
 int main(void)
 {
-    int base, exponent;
+    unsigned int base, exponent;
     unsigned long long modulus;
 
     base = 4;
-    exponent = 65537;
+    // exponent = 65537;
+    // exponent = 269488144; // 0x10101010
+    exponent = 2863311530; // 0xAAAAAAAA
 
     // p = 44893
     // q = 33301
