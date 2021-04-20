@@ -19,12 +19,17 @@ fi
 
 cpu_cores=$(nproc --all)
 
+# Ensuring CPU core is within what is available
 echo "Number of cores on system:" $cpu_cores
 echo ""
 
 if [ $1 -ge 0 ] && [ $1 -lt $cpu_cores ]; then
+    echo "Processes will execute on core ${1}..."
+    echo ""
+
     echo "Executing victim..."
     while true; do taskset -c $1 ./victim/square_multiply/victim_sqr_mult; done & echo "PID of victim process:" $!
+    echo ""
 
     echo "Waiting to execute spy..."
     sleep 5s
