@@ -53,4 +53,9 @@ fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(20, 6))
 for x, y in zip(samples, cache_trace):
     plt.scatter([x] * len(y), y, c=cm.hot(y))
 
+##plt.ylim([0, 200])
+plt.xlabel("Sample Number")
+plt.ylabel("Cache Set")
+plt.title("Cache Set Activity, 125 Cycle Threshold")
+
 plt.show()
