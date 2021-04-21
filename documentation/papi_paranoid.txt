@@ -1,0 +1,44 @@
+Available components and hardware information.
+--------------------------------------------------------------------------------
+PAPI version             : 5.6.0.0
+Operating system         : Linux 5.4.0-72-generic
+Vendor string and code   : AuthenticAMD (2, 0x2)
+Model string and code    : AMD Ryzen 7 3700X 8-Core Processor (113, 0x71)
+CPU revision             : 0.000000
+CPUID                    : Family/Model/Stepping 23/113/0, 0x17/0x71/0x00
+CPU Max MHz              : 3600
+CPU Min MHz              : 2200
+Total cores              : 16
+SMT threads per core     : 2
+Cores per socket         : 8
+Sockets                  : 1
+Cores per NUMA region    : 16
+NUMA regions             : 1
+Running in a VM          : no
+Number Hardware Counters : 0
+Max Multiplex Counters   : 384
+Fast counter read (rdpmc): no
+--------------------------------------------------------------------------------
+
+Compiled-in components:
+Name:   perf_event              Linux perf_event CPU counters
+   \-> Disabled: perf_event support disabled by Linux with paranoid=3
+Name:   perf_event_uncore       Linux perf_event CPU uncore and northbridge
+   \-> Disabled: No uncore PMUs or events found
+
+Active components:
+
+--------------------------------------------------------------------------------
+
+=========================
+          NOTES
+=========================
+
+   ISSUES ENCOUNTERED WITH HAVING EVENTS PROPERLY ACCESSED
+   CAUSED DUE TO perf_event_paranoid BEING SET TO HIGHEST
+   POSSIBLE VALUE OF 3
+
+   TO SET TO A LOWER PARANOID LEVEL, USE THE FOLLOWING:
+      sudo sh -c 'echo -1 >/proc/sys/kernel/perf_event_paranoid'
+
+   MAY SOMETIMES RESET UPON SYSTEM RESET
