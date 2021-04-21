@@ -2,8 +2,13 @@ import matplotlib.pyplot as plt
 
 from matplotlib import cm
 
+"""
+    Reads the trace file pointed by TRACE_PATH, and plots cache
+    set activity against the sample from which it was obtained.
+"""
+
 TRACE_PATH = "../spy/trace.txt"
-LAT_THRESHOLD = 125
+LAT_THRESHOLD = 50
 NUM_SAMPLES = 10000
 NUM_SETS = 64
 

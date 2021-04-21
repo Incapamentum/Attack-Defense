@@ -1,9 +1,12 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
 from matplotlib import cm
 from random import randint
+
+"""
+    Reads the trace file pointed by TRACE_PATH, and plots cache
+    probe latency against the sample from which it was obtained.
+"""
 
 TRACE_PATH = "../spy/trace.txt"
 NUM_SAMPLES = 10000
