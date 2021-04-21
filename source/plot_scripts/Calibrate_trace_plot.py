@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.transforms as transforms
 import sys
 
 from matplotlib import cm
@@ -42,11 +43,23 @@ cache_trace.append(int(median(cache_trace)))
 for i in range(len(cache_trace)):
     samples.append(i + 1)
 
+# Setting up for horizontal line
+avg = int(sum(cache_trace) / len(cache_trace))
+avg_list = []
+
+for i in range(len(cache_trace)):
+    avg_list.append(avg)
+
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(10, 6))
+
+axes.axhline(y=avg, color="red")
+trans = transforms.blended_transform_factory(axes.get_yticklabels()[0].get_transform(), axes.transData)
+axes.text(0, avg, "{: .0f}".format(avg), color="red", transform=trans, ha="right", va="center")
 
 plt.scatter(samples, cache_trace)
 plt.plot(samples, cache_trace)
+# plt.plot(samples, avg_list)
 plt.xlabel("Sample Number")
 plt.ylabel("Probe Time (Cycles)")
-plt.title("Prime+Probe Calibration")
+plt.title(f'Prime+Probe Latency of Set {set_num}')
 plt.show()

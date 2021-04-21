@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $# -ne 3 ]]; then
+if [[ $# -ne 4 ]]; then
     echo "Illegal number of parameters!"
     echo ""
     echo "Usage: ${0} [core] [exponent] [samples] [set]"
