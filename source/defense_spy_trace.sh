@@ -17,6 +17,7 @@ echo ""
 
 # Ensuring CPU core is within what is available
 if [ $1 -ge 0 ] && [ $1 -lt $cpu_cores ]; then
+
     echo "Spy process will execute on core ${1}..."
     echo ""
 
@@ -27,7 +28,7 @@ if [ $1 -ge 0 ] && [ $1 -lt $cpu_cores ]; then
     echo ""
 
     echo "Collecting quickhpc information..."
-    ./quickhpc/quickhpc -a %1 -n $3 -i 1000 -c $2 > ./hpc_data/spy_hpc.txt
+    ./quickhpc/quickhpc -a %1 -n $3 -i 10 -c $2 > ./hpc_data/spy_hpc.txt
     pkill primeprobe_spy
     echo "Complete"
 

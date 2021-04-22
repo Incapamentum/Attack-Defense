@@ -17,40 +17,35 @@ echo ""
 
 # Ensuring CPU core is within what is available
 if [ $1 -ge 0 ] && [ $1 -lt $cpu_cores ]; then
-    echo "Processes will execute on core ${1}..."
+
+    echo "Process will execute on core ${1}..."
     echo ""
 
     echo "Executing victim..."
-    while true; do taskset -c $1 ./victim/square_multiply/victim_sqr_mult; done & echo "PID of victim process:" $!
-    victim=$!
+    while true; do taskset -c $1 ./victim/square_multiply/victim_sqr_mult; done &
     echo ""
 
     echo "Waiting to execute spy..."
     sleep 5s
 
     echo "Executing spy..."
-    while true; do taskset -c $1 ./spy/primeprobe_spy 1000 > /dev/null; done & echo "PID of spy process:" $!
-    spy=$!
-
-    echo "Executing quickhpc at resolution of 1ms..."
+    while true; do taskset -c $1 ./spy/primeprobe_spy 1000 > /dev/null; done &
     echo ""
 
-    echo "Collecting information on victim process..."
-    ./quickhpc/quickhpc -a $victim -n 1000 -i $3 -c $2 > ./hpc_data/victim_hpc.txt
-    echo "Complete"
+    echo "Executing quickhpc at resolution of 10us..."
     echo ""
 
-    echo "Collecting information on spy process..."
-    ./quickhpc/quickhpc -a $spy -n 1000 -i $3 -c $2 > ./hpc_data/spy_hpc.txt
-    echo "Complete"
-    echo ""
+    echo "Collecting quickhpc information on victim..."
+    ./quickhpc/quickhpc -a %1 -n $3 -i 10 -c $2 > ./hpc_data/victim_hpc.txt
 
+    echo "Collecting quickhpc information on spy..."
+    ./quickhpc/quickhpc -a %2 -n $3 -i 10 -c $2 > ./hpc_data/spy_hpc.txt
+
+    echo ""
     echo "Killing processes..."
-    kill $victim
-    kill $spy
-    echo ""
+    killall -9  victim_sqr_mult
+    killall -9 primeprobe_spy
 
-    echo "Completed!"
 else
     echo "Not a valid core number!"
     exit 2

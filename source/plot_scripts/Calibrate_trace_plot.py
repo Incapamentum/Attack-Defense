@@ -2,12 +2,10 @@ import matplotlib.pyplot as plt
 import matplotlib.transforms as transforms
 import sys
 
-from matplotlib import cm
 from statistics import median
 
 TRACE_PATH = "../calibration/trace.txt"
 NUM_SAMPLES = 10000
-NUM_SETS = 1
 
 if (len(sys.argv) != 2):
     print("Insufficient parameters!\n")
