@@ -88,11 +88,6 @@ else:
 
     plt.ylim([LAT_THRESHOLD, 200])
 
-# if (op == "full"):
-    
-# else:
-    
-
 plt.xlabel("Sample Number")
 plt.ylabel("Probe Latency (cycles)")
 plt.title("Cache Activity")
