@@ -74,13 +74,24 @@ cache_trace.pop(0)
 
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(20, 6))
 
-for x, y in zip(samples, cache_trace):
+if (op == "full"):
+
+    for x, y in zip(samples, cache_trace):
         plt.scatter([x] * len(y), y, c=cm.hot(y), marker=".")
 
-if (op == "full"):
     plt.ylim([0, 200])
+
 else:
+
+    for x, y in zip(samples, cache_trace):
+        plt.scatter([x] * len(y), y, c="blue", marker=".")
+
     plt.ylim([LAT_THRESHOLD, 200])
+
+# if (op == "full"):
+    
+# else:
+    
 
 plt.xlabel("Sample Number")
 plt.ylabel("Probe Latency (cycles)")
