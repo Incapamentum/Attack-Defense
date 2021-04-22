@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ===================
+#     DESCRIPTION
+# ===================
+#     Runs both the spy and victim processes on the same core.
+#     A cache set must be specified, which will then be
+#     monitored. The cache trace is captured. Once completed,
+#     the victim process is then killed.
+#
+
 if [[ $# -ne 4 ]]; then
     echo "Illegal number of parameters!"
     echo ""
