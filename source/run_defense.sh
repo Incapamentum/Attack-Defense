@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 if [[ $# -ne 3 ]]; then
     echo "Illegal number of parameters!"

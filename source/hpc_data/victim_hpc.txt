@@ -1,2 +1,0 @@
-[1;31mFAILED!!![0m
-Line # 206 Error in PAPI_add_event (PAPI_L1_DC): Invalid argument
