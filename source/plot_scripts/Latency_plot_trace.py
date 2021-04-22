@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import sys
 
 from matplotlib import cm
 from random import randint
@@ -9,8 +10,22 @@ from random import randint
 """
 
 TRACE_PATH = "../spy/trace.txt"
+LAT_THRESHOLD = 125
 NUM_SAMPLES = 10000
 NUM_SETS = 64
+
+if (len(sys.argv) != 2):
+    print("Insufficient parameters!\n")
+    print(f'Usage: python3 {sys.argv[0]} [type]')
+    print("     type - valid options are either 'full' or 'partial'")
+    sys.exit(-1)
+
+if ((sys.argv[1] != "full") and (sys.argv[1] != "partial")):
+    print("Invalid option!\n")
+    print("Valid options are either 'full' or 'partial'")
+    sys.exit(-1)
+
+op = sys.argv[1]
 
 with open(TRACE_PATH, "r") as trace_file:
     lines = trace_file.readlines()
@@ -29,47 +44,46 @@ for i in range(NUM_SAMPLES):
     cache_trace.append([])
 
 # Bookkeeping
-i = 0
-count = 0
+j = 0
 
 for l in lines:
 
     probe_sample = l.split()
-    count += len(probe_sample)
 
-    for j in range(len(probe_sample)):
-        probe_sample[j] = int(probe_sample[j])
+    if (op == "full"):
 
-    cache_trace[i] = probe_sample
+        for i in range(len(probe_sample)):
+            probe_sample[i] = int(probe_sample[i])
 
-    i += 1
+        cache_trace[j] = probe_sample
+
+    else:
+
+        partial = []
+
+        for i in range(len(probe_sample)):
+
+            if (int(probe_sample[i]) > LAT_THRESHOLD):
+                partial.append(int(probe_sample[i]))
+
+        cache_trace[j] = partial
+
+    j += 1
 
 cache_trace.pop(0)
 
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(20, 6))
 
-if (SAMPLE):
-    for x, y in zip(samples, cache_trace):
-        plt.scatter([x] * len(y), y, c=cm.hot(y))
+for x, y in zip(samples, cache_trace):
+        plt.scatter([x] * len(y), y, c=cm.hot(y), marker=".")
 
-else:
-    for x, s in zip(cache_trace, cache_sets):
-
-        y = []
-
-        for i in range(NUM_SETS):
-            y.append(s)
-
-        plt.scatter(x, y, c=cm.hot(y))
-
-
-if (SAMPLE):
+if (op == "full"):
     plt.ylim([0, 200])
-    plt.xlabel("Sample Number")
-    plt.ylabel("Probe Latency (cycles)")
 else:
-    plt.xlabel("Probe Time")
-    plt.ylabel("Cache Set")
+    plt.ylim([LAT_THRESHOLD, 200])
 
+plt.xlabel("Sample Number")
+plt.ylabel("Probe Latency (cycles)")
+plt.title("Cache Activity")
 
 plt.show()

@@ -39,7 +39,7 @@ for l in lines:
 
     for j in range(len(probe_sample)):
 
-        if (int(probe_sample[j]) > LAT_THRESHOLD):
+        if (int(probe_sample[j]) < LAT_THRESHOLD):
             cache_sets.append(j)
 
     cache_trace[i] = cache_sets
@@ -56,6 +56,6 @@ for x, y in zip(samples, cache_trace):
 ##plt.ylim([0, 200])
 plt.xlabel("Sample Number")
 plt.ylabel("Cache Set")
-plt.title("Cache Set Activity, 125 Cycle Threshold")
+plt.title("Cache Set Activity")
 
 plt.show()

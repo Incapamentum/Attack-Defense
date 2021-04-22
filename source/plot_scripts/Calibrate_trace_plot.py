@@ -58,7 +58,6 @@ axes.text(0, avg, "{: .0f}".format(avg), color="red", transform=trans, ha="right
 
 plt.scatter(samples, cache_trace)
 plt.plot(samples, cache_trace)
-# plt.plot(samples, avg_list)
 plt.xlabel("Sample Number")
 plt.ylabel("Probe Time (Cycles)")
 plt.title(f'Prime+Probe Latency of Set {set_num}')
