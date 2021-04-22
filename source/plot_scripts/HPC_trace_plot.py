@@ -4,6 +4,19 @@ import sys
 SPY_TRACE_PATH = "../hpc_data/spy_hpc.txt"
 VICTIM_TRACE_PATH = "../hpc_data/victim_hpc.txt"
 
+if (len(sys.argv) != 2):
+    print("Insufficient parameters!\n")
+    print(f'Usage: python3 {sys.argv[0]} [type]')
+    print("     type - valid options are either 'all', 'spy', or 'victim'.")
+    sys.exit()
+
+if ((sys.argv[1] != "all") and (sys.argv[1] != "spy") and (sys.argv[1] != "victim")):
+    print("Invalid option!\n")
+    print("Valid options are either 'all', 'spy', or 'victim'.")
+    sys.exit()
+
+op = sys.argv[1]
+
 with open(SPY_TRACE_PATH, "r") as trace_file:
     spy_lines = trace_file.readlines()
 
@@ -42,10 +55,24 @@ spy_access_latency.insert(0, int(sum(spy_access_latency) / len(spy_access_latenc
 # Graphing
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(10, 6))
 
-plt.plot(samples, spy_access_latency, label="Spy L1 DCache Accesses")
-plt.plot(samples, victim_access_latency, label="Victim L1 DCache Accesses")
+if (op == "all"):
+
+    plt.plot(samples, spy_access_latency, label="Spy L1 DCache Accesses")
+    plt.plot(samples, victim_access_latency, label="Victim L1 DCache Accesses")
+    plt.title("Spy and Victim Process Cache Access")
+    plt.legend()
+
+elif (op == "victim"):
+
+    plt.plot(samples, victim_access_latency)
+    plt.title("Victim L1 DCache Accesses")
+
+elif (op == "spy"):
+
+    plt.plot(samples, spy_access_latency)
+    plt.title("Spy L1 DCache Accesses")
+    
 plt.xlabel("Sample Number")
 plt.ylabel("L1 Data Total Accesses")
-plt.title("Spy and Victim Process Cache Access")
-plt.legend()
+
 plt.show()
